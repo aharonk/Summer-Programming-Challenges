@@ -30,4 +30,4 @@ class Solution:
 # testing
 for string, result in {"NES": False, "NESWW": True, "NNSWWEWSSESSWENNW": True, "": False, "NEEEEEEEEEENNNNNNNNNNWWWWWWWWWW": False}.items():
     s = Solution(string)
-    print(result)
+    print(result) 
