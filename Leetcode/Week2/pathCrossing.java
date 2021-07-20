@@ -1,9 +1,28 @@
 class Solution {
+    static class Point {
+        private final int X;
+        private final int Y;
+        
+        public Point(int x, int y) {
+            X = x;
+            Y = y;
+        }
+        
+        public int hashCode() {
+            return  29 * (29 * 43 + X) + Y;
+        }
+        
+        public boolean equals(Object o) {
+            assert o instanceof Point;
+            return this.hashCode() == o.hashCode();
+        }
+    }
+    
     public boolean isPathCrossing(String path) {
-        HashSet<String> coordsVisited = new HashSet<>();
+        HashSet<Point> coordsVisited = new HashSet<>();
         int currX = 0, currY = 0;
-        String currPos;
-        coordsVisited.add(String.valueOf(0)+"."+0);
+        Point currPos;
+        coordsVisited.add(new Point(currX, currY));
 
         for (char c : path.toCharArray()) {
             switch (c) {
@@ -14,7 +33,7 @@ class Solution {
                 default -> System.exit(-1);
             }
 
-            if (coordsVisited.contains(currPos = String.valueOf(currY)+"."+currX)) {
+            if (coordsVisited.contains(currPos = new Point(currX, currY))) {
                 return true;
             }
 
